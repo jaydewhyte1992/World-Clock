@@ -1,6 +1,9 @@
 body {
-  background-color: #f9f7fe;
-  font-family: sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1496867506859-2421b3d9a226?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 h1 {
   text-align: center;
@@ -19,16 +22,20 @@ select {
   font-size: 18px;
   border-radius: 6px;
   cursor: pointer;
-  font-family: monospace;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  color: rgb(220, 40, 130);
 }
 
 .container {
   max-width: 600px;
-  margin: 60px auto;
-  background: white;
-  padding: 30px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 10px;
+  margin: 60px auto 30px;
+  background: whitesmoke;
+  opacity: 0.7;
+  padding: 25px;
+  box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.9);
+  border-radius: 30px;
 }
 
 .city {
@@ -44,9 +51,10 @@ select {
 
 .date {
   opacity: 0.7;
+  font-weight: bold;
 }
 .time {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -56,8 +64,9 @@ select {
 }
 
 footer {
+  margin-top: 20px;
   text-align: center;
   font-size: 12px;
   font-family: monospace;
-  color: gray;
+  color: black;
 }

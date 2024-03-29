@@ -26,16 +26,6 @@ function updateTime() {
   copenhagenTimeElement.innerHTML = copenhagenTime.format(
     "h:mm:ss [<small>]A[</small>]"
   );
-
-  //lisbon
-  let lisbonElement = document.querySelector("#lisbon");
-  let lisbonDateElement = lisbonElement.querySelector(".date");
-  let lisbonTimeElement = lisbonElement.querySelector(".time");
-  let lisbonTime = moment().tz("Europe/Dublin");
-  lisbonDateElement.innerHTML = lisbonTime.format("MMMM Do YYYY");
-  lisbonTimeElement.innerHTML = lisbonTime.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
 }
 
 let cityFlags = {
@@ -44,6 +34,7 @@ let cityFlags = {
   "Europe/Amsterdam": "🇳🇱",
   "America/Vancouver": "🇨🇦",
   "Africa/Cairo": "🇪🇬",
+  "Asia/Baghdad": "🇮🇶",
 };
 function updateCity(event) {
   let cityTimeZone = event.target.value;
@@ -63,7 +54,8 @@ function updateCity(event) {
     <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
     "A"
   )}</small></div>
-  </div>`;
+  
+  </div><div style="text-align: center;"><a href="index.html" style="text-decoration: none; font-size: smaller; font-weight: bold;">Go back</a></div>`;
 }
 
 updateTime();
