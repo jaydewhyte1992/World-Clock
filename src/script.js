@@ -40,27 +40,34 @@ function updateCity(event) {
   let cityTimeZone = event.target.value;
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
+    let currentCityTime = moment().tz(cityTimeZone);
+    let citiesElement = document.querySelector(".cities");
+    citiesElement.innerHTML = ` 
+    <div class="city">
+      <div>
+        <h2>Current Location</h2>
+        <div class="date">${currentCityTime.format("MMMM Do YYYY")}</div>
+      </div>
+      <div class="time">${currentCityTime.format(
+        "h:mm:ss"
+      )} <small>${currentCityTime.format("A")}</small></div>
+    </div><div style="text-align: center;"><a href="index.html" font-size: smaller; font-weight: bold;">Go back</a></div>`;
+  } else {
+    let cityName = cityTimeZone.replace("_", "").split("/")[1];
+    let cityTime = moment().tz(cityTimeZone);
+    let citiesElement = document.querySelector(".cities");
+    let flagEmoji = cityFlags[cityTimeZone];
+    citiesElement.innerHTML = ` 
+    <div class="city">
+      <div>
+        <h2>${cityName} ${flagEmoji}</h2>
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+      </div>
+      <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+      "A"
+    )}</small></div>
+    </div><div style="text-align: center;"><a href="index.html" font-size: smaller; font-weight: bold;">Go back</a></div>`;
   }
-  let cityName = cityTimeZone.replace("_", "").split("/")[1];
-  let cityTime = moment().tz(cityTimeZone);
-  let citiesElement = document.querySelector(".cities");
-
-  let flagEmoji = "";
-  if (cityTimeZone !== moment.tz.guess()) {
-    flagEmoji = cityFlags[cityTimeZone];
-  }
-
-  citiesElement.innerHTML = ` 
-  <div class="city">
-    <div>
-      <h2>${cityName} ${flagEmoji}</h2>
-      <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-    </div>
-    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
-    "A"
-  )}</small></div>
-  
-  </div><div style="text-align: center;"><a href="index.html" font-size: smaller; font-weight: bold;">Go back</a></div>`;
 }
 
 updateTime();
