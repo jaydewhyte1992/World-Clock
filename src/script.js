@@ -44,7 +44,12 @@ function updateCity(event) {
   let cityName = cityTimeZone.replace("_", "").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector(".cities");
-  let flagEmoji = cityFlags[cityTimeZone];
+
+  let flagEmoji = "";
+  if (cityTimeZone !== moment.tz.guess()) {
+    flagEmoji = cityFlags[cityTimeZone];
+  }
+
   citiesElement.innerHTML = ` 
   <div class="city">
     <div>
