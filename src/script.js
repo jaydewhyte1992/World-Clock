@@ -1,11 +1,11 @@
+//vostok
 function updateTime() {
-  //melbourne
-  let melbourneElement = document.querySelector("#melbourne");
-  let melbourneDateElement = melbourneElement.querySelector(".date");
-  let melbourneTimeElement = melbourneElement.querySelector(".time");
-  let melbourneTime = moment();
-  melbourneDateElement.innerHTML = melbourneTime.format("MMMM Do YYYY");
-  melbourneTimeElement.innerHTML = melbourneTime.format(
+  let vostokElement = document.querySelector("#vostok");
+  let vostokDateElement = vostokElement.querySelector(".date");
+  let vostokTimeElement = vostokElement.querySelector(".time");
+  let vostokTime = moment().tz("Antarctica/Vostok");
+  vostokDateElement.innerHTML = vostokTime.format("MMMM Do YYYY");
+  vostokTimeElement.innerHTML = vostokTime.format(
     "h:mm:ss [<small>]A[</small>]"
   );
 
@@ -39,7 +39,7 @@ function updateTime() {
 }
 
 let cityFlags = {
-  "Australia/Canberra": "🇦🇺",
+  "Australia/Sydney": "🇦🇺",
   "Europe/Prague": "🇨🇿",
   "Europe/Amsterdam": "🇳🇱",
   "America/Vancouver": "🇨🇦",
@@ -47,6 +47,9 @@ let cityFlags = {
 };
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
   let cityName = cityTimeZone.replace("_", "").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector(".cities");
@@ -64,6 +67,13 @@ function updateCity(event) {
 }
 updateTime();
 setInterval(updateTime, 1000);
+
+function updateDropdownCities() {
+  let citiesSelectElement = document.querySelector("#city");
+  let selectedCity = citiesSelectElement.value;
+  updateCity({ target: { value: selectedCity } });
+}
+setInterval(updateDropdownCities, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
