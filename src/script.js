@@ -65,6 +65,7 @@ function updateCity(event) {
   )}</small></div>
   </div>`;
 }
+
 updateTime();
 setInterval(updateTime, 1000);
 
