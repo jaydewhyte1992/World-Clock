@@ -18,8 +18,8 @@ select {
   padding: 10px;
   font-size: 18px;
   border-radius: 6px;
-  text-align: center;
   cursor: pointer;
+  font-family: monospace;
 }
 
 .container {
