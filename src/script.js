@@ -55,7 +55,7 @@ function updateCity(event) {
     "A"
   )}</small></div>
   
-  </div><div style="text-align: center;"><a href="index.html" style="text-decoration: none; font-size: smaller; font-weight: bold;">Go back</a></div>`;
+  </div><div style="text-align: center;"><a href="index.html" font-size: smaller; font-weight: bold;">Go back</a></div>`;
 }
 
 updateTime();
